@@ -1,0 +1,11 @@
+{
+  "@@locale": "pt",
+  "appTitle": "Hero",
+  "@appTitle": {
+    "description": "Título da aplicação"
+  },
+  "label": "Label",
+  "@label": {
+    "description": "Label da Appbar"
+  }
+}
