@@ -16,7 +16,7 @@ class Appearance {
 
   Appearance.fromJson(Map<String, dynamic> json) {
     gender = json['gender'];
-    race = json['race'];
+    race = json['race'] ?? "";
     height = json['height'].cast<String>();
     weight = json['weight'].cast<String>();
     eyeColor = json['eyeColor'];

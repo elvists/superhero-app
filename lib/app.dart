@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:superhero/routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'screens/home.dart';
+import 'screens/home/home.dart';
 
 class App extends StatelessWidget {
   @override
@@ -19,7 +19,7 @@ class App extends StatelessWidget {
       // onGenerateTitle: (BuildContext context) =>
       //     AppLocalizations.of(context).appTitle,
       theme: ThemeData(),
-      home: Home(),
+      home: HomeContainer(),
     );
   }
 }
