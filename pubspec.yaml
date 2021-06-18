@@ -20,6 +20,8 @@ dev_dependencies:
   flutter_localizations: 
     sdk: flutter
   intl: ^0.17.0
+  flutter_bloc: ^7.0.1
+  dio: ^4.0.0
     
 flutter:
   uses-material-design: true

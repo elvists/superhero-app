@@ -5,7 +5,7 @@ import 'images.dart';
 import 'powerstats.dart';
 import 'work.dart';
 
-class hero {
+class Superhero {
   int id;
   String name;
   String slug;
@@ -16,7 +16,7 @@ class hero {
   Connections connections;
   Images images;
 
-  hero(
+  Superhero(
       {this.id,
       this.name,
       this.slug,
@@ -27,7 +27,7 @@ class hero {
       this.connections,
       this.images});
 
-  hero.fromJson(Map<String, dynamic> json) {
+  Superhero.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     slug = json['slug'];
