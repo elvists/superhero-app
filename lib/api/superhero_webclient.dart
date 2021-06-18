@@ -10,7 +10,7 @@ class SuperheroWebClient {
     return (response.data as List).map((x) => Superhero.fromJson(x)).toList();
   }
 
-  Future<Superhero> get(int id) async {
+  Future<Superhero> getById(int id) async {
     final response = await _dio.get('id/$id.json');
     return Superhero.fromJson(response.data);
   }
