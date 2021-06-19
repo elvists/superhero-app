@@ -21,8 +21,19 @@ class SuperheroesListBloc
         List<Superhero> superheroes = await superheroWebClient.getAll();
         yield SuperheroesListFetchedState(superheroes: superheroes);
       }
+      if (event is SuperheroesFilterEvent) {
+        yield SuperheroesListFilteredState(
+            superheroesFiltered:
+                _filter(event.superheroes, filter: event.filter));
+      }
     } catch (e) {
       yield SuperheroesListErrorState(exception: e);
     }
+  }
+
+  _filter(List<Superhero> superheroes, {String filter}) {
+    return superheroes
+        .where((i) => i.name.toUpperCase().contains(filter.toUpperCase()))
+        .toList();
   }
 }

@@ -24,6 +24,15 @@ class SuperheroesListFetchedState extends SuperheroesListState {
   List<Object> get props => [this.superheroes];
 }
 
+class SuperheroesListFilteredState extends SuperheroesListState {
+  final List<Superhero> superheroesFiltered;
+
+  const SuperheroesListFilteredState({@required this.superheroesFiltered});
+
+  @override
+  List<Object> get props => [this.superheroesFiltered];
+}
+
 class SuperheroesListErrorState extends SuperheroesListState {
   final Exception exception;
 

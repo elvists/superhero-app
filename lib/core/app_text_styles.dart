@@ -13,4 +13,9 @@ abstract class AppTextStyles {
     color: AppColors.darkGray,
     fontWeight: FontWeight.bold,
   );
+
+  static const textStyleHint = TextStyle(
+    fontSize: 16,
+    color: AppColors.lightGray,
+  );
 }

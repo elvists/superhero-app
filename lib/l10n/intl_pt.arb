@@ -1,11 +1,11 @@
 {
   "@@locale": "pt",
-  "appTitle": "Hero",
+  "appTitle": "Superhero",
   "@appTitle": {
     "description": "Título da aplicação"
   },
-  "label": "Label",
-  "@label": {
-    "description": "Label da Appbar"
+  "searchHint": "Search",
+  "@searchHint": {
+    "description": "Label do input de pesquisa"
   }
 }
