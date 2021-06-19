@@ -8,8 +8,8 @@ import 'superhero_state.dart';
 class SuperheroBloc extends Bloc<SuperheroEvent, SuperheroState> {
   final SuperheroWebClient superheroWebClient;
 
-  SuperheroBloc()
-      : superheroWebClient = SuperheroWebClient(),
+  SuperheroBloc({SuperheroWebClient webClient})
+      : superheroWebClient = webClient ?? SuperheroWebClient(),
         super(const SuperheroEmptyState());
 
   @override

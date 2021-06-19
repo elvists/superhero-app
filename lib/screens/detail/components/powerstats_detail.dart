@@ -3,7 +3,6 @@ import 'package:flutter_radar_chart/flutter_radar_chart.dart';
 import 'package:superhero/core/app_colors.dart';
 import 'package:superhero/model/powerstats.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:superhero/screens/detail/components/label_value_widget.dart';
 
 import 'expansion_tile_detail.dart';
 
@@ -12,12 +11,17 @@ class PowerstatsDetail extends StatelessWidget {
   const PowerstatsDetail({Key key, this.powerstats}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return ExpansionTileDetail(
-      child: _buildContent(context),
-      title: AppLocalizations.of(context).powerstatsTitle,
-    );
-  }
+  Widget build(BuildContext context) => ExpansionTileDetail(
+        content: _buildContent(context),
+        title: AppLocalizations.of(context).powerstatsTitle,
+      );
+
+  Column _buildContent(BuildContext context) => Column(
+        children: [
+          _buildRadarChart(context),
+          _buildDetails(context),
+        ],
+      );
 
   Container _buildRadarChart(BuildContext context) {
     const ticks = [25, 50, 75, 100];
@@ -28,65 +32,59 @@ class PowerstatsDetail extends StatelessWidget {
         features: powerstats.atributesList,
         data: [powerstats.dataList],
         sides: powerstats.atributesList.length,
-        graphColors: [Colors.blueAccent],
+        graphColors: [AppColors.blue],
       ),
     );
   }
 
-  _buildContent(BuildContext context) {
-    return Column(
-      children: [_buildRadarChart(context), _buildDetails(context)],
-    );
-  }
-
-  _buildDetails(BuildContext context) {
-    return Container(
-      color: Colors.black12,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _buildItemColumn([
-              _buildItem(
-                  label: AppLocalizations.of(context).intelligenceLabel,
-                  value: powerstats.intelligence),
-              _buildItem(
-                label: AppLocalizations.of(context).strengthLabel,
-                value: powerstats.strength,
+  Container _buildDetails(BuildContext context) => Container(
+        color: Colors.black12,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildItemColumn([
+                _buildItem(
+                    label: AppLocalizations.of(context).intelligenceLabel,
+                    value: powerstats.intelligence),
+                _buildItem(
+                  label: AppLocalizations.of(context).strengthLabel,
+                  value: powerstats.strength,
+                ),
+              ]),
+              _buildItemColumn([
+                _buildItem(
+                  label: AppLocalizations.of(context).speedLabel,
+                  value: powerstats.speed,
+                ),
+                _buildItem(
+                  label: AppLocalizations.of(context).durabilityLabel,
+                  value: powerstats.durability,
+                ),
+              ]),
+              _buildItemColumn(
+                [
+                  _buildItem(
+                      label: AppLocalizations.of(context).powerLabel,
+                      value: powerstats.power),
+                  _buildItem(
+                    label: AppLocalizations.of(context).combatLabel,
+                    value: powerstats.combat,
+                  ),
+                ],
               ),
-            ]),
-            _buildItemColumn([
-              _buildItem(
-                label: AppLocalizations.of(context).speedLabel,
-                value: powerstats.speed,
-              ),
-              _buildItem(
-                label: AppLocalizations.of(context).durabilityLabel,
-                value: powerstats.durability,
-              ),
-            ]),
-            _buildItemColumn([
-              _buildItem(
-                  label: AppLocalizations.of(context).powerLabel,
-                  value: powerstats.power),
-              _buildItem(
-                label: AppLocalizations.of(context).combatLabel,
-                value: powerstats.combat,
-              ),
-            ]),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
-  }
+      );
 
-  _buildItemColumn(List<Widget> items) => Column(
+  Column _buildItemColumn(List<Widget> items) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: items,
       );
 
-  _buildItem({@required String label, @required int value}) => Row(
+  Row _buildItem({@required String label, @required int value}) => Row(
         children: [
           Text(
             label,
@@ -100,7 +98,7 @@ class PowerstatsDetail extends StatelessWidget {
             child: Text(
               value?.toString(),
               style: TextStyle(
-                  color: Colors.blueAccent,
+                  color: AppColors.blue,
                   fontSize: 24,
                   fontWeight: FontWeight.bold),
             ),

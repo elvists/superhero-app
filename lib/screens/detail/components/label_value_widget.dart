@@ -8,23 +8,21 @@ class LabelValue extends StatelessWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: AppTextStyles.textStyleLabel,
-          ),
-          Text(
-            value,
-            style: AppTextStyles.textStyleValue,
-          ),
-        ],
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: AppTextStyles.textStyleLabel,
+            ),
+            Text(
+              value,
+              style: AppTextStyles.textStyleValue,
+            ),
+          ],
+        ),
+      );
 }
