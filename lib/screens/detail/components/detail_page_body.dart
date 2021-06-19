@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:superhero/common/components/label_value_widget.dart';
-import 'package:superhero/model/appearance.dart';
 import 'package:superhero/model/superhero.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:superhero/screens/detail/components/appearance.dart';
+import 'package:superhero/screens/detail/components/appearance_detail.dart';
+import 'package:superhero/screens/detail/components/connections_detail.dart';
+
+import 'biography_detail.dart';
+import 'work_detail.dart';
 
 class DetailPageBody extends StatelessWidget {
   final Superhero superhero;
@@ -16,6 +17,9 @@ class DetailPageBody extends StatelessWidget {
       delegate: SliverChildListDelegate(
         [
           AppearanceDetail(appearance: superhero.appearance),
+          BiographyDetail(biography: superhero.biography),
+          WorkDetail(work: superhero.work),
+          ConnectionsDetail(connections: superhero.connections)
         ],
       ),
     );

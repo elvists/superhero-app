@@ -33,4 +33,8 @@ class Appearance {
     data['hairColor'] = this.hairColor;
     return data;
   }
+
+  getHeight() => this.height.join(' - ');
+
+  getWeight() => this.weight.join(' - ');
 }

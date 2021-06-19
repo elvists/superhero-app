@@ -1,0 +1,95 @@
+{
+  "@@locale": "en",
+  "appTitle": "Superhero",
+  "@appTitle": {
+    "description": "Título da aplicação"
+  },
+  "searchHint": "Search",
+  "@searchHint": {
+    "description": "Label do input de pesquisa"
+  },
+  "genderLabel": "Gender:",
+  "@genderLabel": {
+    "description": "Label para o campo gênero"
+  },
+  "raceLabel": "Race:",
+  "@raceLabel": {
+    "description": "Label para o campo raça"
+  },
+  "heightLabel": "Height:",
+  "@heightLabel": {
+    "description": "Label para o campo altura"
+  },
+  "weightLabel": "Weight:",
+  "@weightLabel": {
+    "description": "Label para o campo peso"
+  },
+  "eyeColorLabel": "Eye Color:",
+  "@eyeColorLabel": {
+    "description": "Label para o campo cor do olho"
+  },
+  "hairColorLabel": "Hair Color:",
+  "@hairColorLabel": {
+    "description": "Label para o campo cor do cabelo"
+  },
+  "appearanceTitle": "Appearance",
+  "@appearanceTitle": {
+    "description": "Título para Aparência"
+  },
+    "fullNameLabel": "Full Name:",
+  "@fullNameLabel": {
+    "description": "Label para o campo nome completo"
+  },
+  "alterEgosLabel": "Alter Ego:",
+  "@alterEgosLabel": {
+    "description": "Label para o campo alter ego"
+  },
+  "aliasesLabel": "Aliases:",
+  "@aliasesLabel": {
+    "description": "Label para o campo apelidos"
+  },
+  "placeOfBirthLabel": "Place of Birth:",
+  "@placeOfBirthLabel": {
+    "description": "Label para o campo local de nascimento"
+  },
+  "firstAppearanceLabel": "First Appearance:",
+  "@firstAppearanceLabel": {
+    "description": "Label para o campo primeira aparência"
+  },
+  "publisherLabel": "Publisher:",
+  "@publisherLabel": {
+    "description": "Label para o campo editora"
+  },
+  "alignmentLabel": "Alignment:",
+  "@alignmentLabel": {
+    "description": "Label para o campo alinhamento"
+  },
+  "biographyTitle": "Biography",
+  "@biographyTitle": {
+    "description": "Título para Biografia"
+  },
+  "baseLabel": "Base:",
+  "@baseLabel": {
+    "description": "Label para o campo base"
+  },
+  "occupationLabel": "Occupation:",
+  "@occupationLabel": {
+    "description": "Label para o campo ocupação"
+  },
+  "workTitle": "Work",
+  "@workTitle": {
+    "description": "Título para trabalho"
+  },
+  "groupAffiliationLabel": "Group Affiliation:",
+  "@groupAffiliationLabel": {
+    "description": "Label para o campo afiliação de grupo"
+  },
+  "relativesLabel": "Relatives:",
+  "@relativesLabel": {
+    "description": "Label para o campo parentes"
+  },
+  "connectionsTitle": "Connections",
+  "@connectionsTitle": {
+    "description": "Título para trabalho"
+  }
+}

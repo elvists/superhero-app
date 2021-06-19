@@ -37,4 +37,6 @@ class Biography {
     data['alignment'] = this.alignment;
     return data;
   }
+
+  getAliases() => this.aliases.join('/');
 }

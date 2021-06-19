@@ -27,4 +27,10 @@ abstract class AppTextStyles {
     fontSize: 16,
     color: AppColors.darkGray,
   );
+
+  static const textStyleExpansionTileTitle = TextStyle(
+    fontSize: 18,
+    color: AppColors.darkGray,
+    fontWeight: FontWeight.bold,
+  );
 }
