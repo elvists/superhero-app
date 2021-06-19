@@ -18,4 +18,13 @@ abstract class AppTextStyles {
     fontSize: 16,
     color: AppColors.lightGray,
   );
+
+  static const textStyleLabel = TextStyle(
+    fontSize: 14,
+    color: AppColors.gray,
+  );
+  static const textStyleValue = TextStyle(
+    fontSize: 16,
+    color: AppColors.darkGray,
+  );
 }

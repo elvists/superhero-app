@@ -1,11 +1,16 @@
 import 'package:flutter/widgets.dart';
+import 'package:superhero/screens/detail/detail.dart';
+import 'package:superhero/screens/home/home.dart';
 
 const String HomeRoute = "/home";
+const String DetailRoute = "/hero";
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case DetailRoute:
+      return _getPageRoute(DetailContainer(id: settings.arguments), settings);
     default:
-      return _getPageRoute(Container(), settings);
+      return _getPageRoute(HomeContainer(), settings);
   }
 }
 

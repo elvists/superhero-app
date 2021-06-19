@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:superhero/common/components/cache_network_image_with_progress.dart';
 import 'package:superhero/core/app_text_styles.dart';
 import 'package:superhero/model/superhero.dart';
+import 'package:superhero/routes.dart';
 
 class ItemList extends StatelessWidget {
   final Superhero superhero;
@@ -9,11 +11,17 @@ class ItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Row(
-        children: [
-          Image.network(superhero.images.sm),
-          _buildContent(),
-        ],
+      child: InkWell(
+        onTap: () => _goToDetailsScreen(context),
+        child: Row(
+          children: [
+            Container(
+                width: 100,
+                child: CacheNetworkImageWithProgress(
+                    imageUrl: superhero.images.sm)),
+            _buildContent(),
+          ],
+        ),
       ),
     );
   }
@@ -44,4 +52,8 @@ class ItemList extends StatelessWidget {
           ],
         ),
       );
+
+  _goToDetailsScreen(BuildContext context) {
+    Navigator.pushNamed(context, DetailRoute, arguments: superhero.id);
+  }
 }
