@@ -24,36 +24,39 @@ class BiographyDetail extends StatelessWidget {
   _buildContent(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(children: [
-        LabelValue(
-          label: AppLocalizations.of(context).fullNameLabel,
-          value: biography.fullName,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).alterEgosLabel,
-          value: biography.alterEgos,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).placeOfBirthLabel,
-          value: biography.placeOfBirth,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).publisherLabel,
-          value: biography.publisher,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).alignmentLabel,
-          value: biography.alignment,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).firstAppearanceLabel,
-          value: biography.firstAppearance,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).aliasesLabel,
-          value: biography.getAliases(),
-        ),
-      ]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          LabelValue(
+            label: AppLocalizations.of(context).fullNameLabel,
+            value: biography.fullName,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).alterEgosLabel,
+            value: biography.alterEgos,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).placeOfBirthLabel,
+            value: biography.placeOfBirth,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).publisherLabel,
+            value: biography.publisher,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).alignmentLabel,
+            value: biography.alignment,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).firstAppearanceLabel,
+            value: biography.firstAppearance,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).aliasesLabel,
+            value: biography.getAliases(),
+          ),
+        ],
+      ),
     );
   }
 }

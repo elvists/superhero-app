@@ -24,32 +24,35 @@ class AppearanceDetail extends StatelessWidget {
   _buildContent(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(children: [
-        LabelValue(
-          label: AppLocalizations.of(context).genderLabel,
-          value: appearance.gender,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).raceLabel,
-          value: appearance.race,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).eyeColorLabel,
-          value: appearance.eyeColor,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).hairColorLabel,
-          value: appearance.hairColor,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).heightLabel,
-          value: appearance.getHeight(),
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).weightLabel,
-          value: appearance.getWeight(),
-        ),
-      ]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          LabelValue(
+            label: AppLocalizations.of(context).genderLabel,
+            value: appearance.gender,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).raceLabel,
+            value: appearance.race,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).eyeColorLabel,
+            value: appearance.eyeColor,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).hairColorLabel,
+            value: appearance.hairColor,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).heightLabel,
+            value: appearance.getHeight(),
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).weightLabel,
+            value: appearance.getWeight(),
+          ),
+        ],
+      ),
     );
   }
 }

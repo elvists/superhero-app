@@ -33,4 +33,22 @@ class Powerstats {
     data['combat'] = this.combat;
     return data;
   }
+
+  List<int> get dataList => [
+        this.intelligence,
+        this.strength,
+        this.speed,
+        this.durability,
+        this.power,
+        this.combat,
+      ];
+
+  List<String> get atributesList => [
+        "Intelligence",
+        "Strength",
+        "Speed",
+        "Durability",
+        "Power",
+        "Combat",
+      ];
 }

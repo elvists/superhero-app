@@ -91,5 +91,34 @@
   "connectionsTitle": "Connections",
   "@connectionsTitle": {
     "description": "Título para trabalho"
+  },
+  "powerstatsTitle": "Powerstats",
+  "@powerstatsTitle": {
+    "description": "Título para estatísticas de poder"
+  },
+  "intelligenceLabel": "INT:",
+  "@intelligenceLabel": {
+    "description": "Label para o campo inteligência"
+  },
+  "strengthLabel": "STR:",
+  "@strengthLabel": {
+    "description": "Label para o campo força"
+  },
+  "speedLabel": "SPE:",
+  "@speedLabel": {
+    "description": "Label para o campo velocidade"
+  },
+  "durabilityLabel": "DUR:",
+  "@durabilityLabel": {
+    "description": "Label para o campo durabilidade"
+  },
+  "powerLabel": "POW:",
+  "@powerLabel": {
+    "description": "Label para o campo poder"
+  },
+  "combatLabel": "COM:",
+  "@combatLabel": {
+    "description": "Label para o campo combate"
   }
+  
 }

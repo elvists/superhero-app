@@ -24,16 +24,19 @@ class ConnectionsDetail extends StatelessWidget {
   _buildContent(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(children: [
-        LabelValue(
-          label: AppLocalizations.of(context).groupAffiliationLabel,
-          value: connections.groupAffiliation,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).relativesLabel,
-          value: connections.relatives,
-        ),
-      ]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          LabelValue(
+            label: AppLocalizations.of(context).groupAffiliationLabel,
+            value: connections.groupAffiliation,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).relativesLabel,
+            value: connections.relatives,
+          ),
+        ],
+      ),
     );
   }
 }

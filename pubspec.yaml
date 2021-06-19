@@ -23,6 +23,7 @@ dev_dependencies:
   dio: ^4.0.0
   equatable: ^2.0.3
   cached_network_image: ^3.0.0
+  flutter_radar_chart: ^0.2.0
 
 flutter:
   uses-material-design: true
