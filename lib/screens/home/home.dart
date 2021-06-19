@@ -34,7 +34,7 @@ class _HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<_HomeScreen> {
-  List<Superhero> _superheroes;
+  List<Superhero> _superheroes = [];
   List<Superhero> _superheroesFiltered;
   FilterHome _filter = FilterHome();
 
