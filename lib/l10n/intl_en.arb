@@ -119,6 +119,14 @@
   "combatLabel": "COM:",
   "@combatLabel": {
     "description": "Label para o campo combate"
+  },
+  "errorMessage": "An error has occurred. Try again.",
+  "@errorMessage": {
+    "description": "Mensagem de erro"
+  },
+  "retryButtonLabel": "Retry",
+  "@retryButtonLabel": {
+    "description": "Label para botão de tentar novamente"
   }
   
 }

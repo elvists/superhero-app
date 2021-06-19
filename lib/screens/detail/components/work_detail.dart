@@ -24,16 +24,19 @@ class WorkDetail extends StatelessWidget {
   _buildContent(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(children: [
-        LabelValue(
-          label: AppLocalizations.of(context).baseLabel,
-          value: work.base,
-        ),
-        LabelValue(
-          label: AppLocalizations.of(context).occupationLabel,
-          value: work.occupation,
-        ),
-      ]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          LabelValue(
+            label: AppLocalizations.of(context).baseLabel,
+            value: work.base,
+          ),
+          LabelValue(
+            label: AppLocalizations.of(context).occupationLabel,
+            value: work.occupation,
+          ),
+        ],
+      ),
     );
   }
 }

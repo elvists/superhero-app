@@ -82,6 +82,7 @@ class PowerstatsDetail extends StatelessWidget {
   }
 
   _buildItemColumn(List<Widget> items) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: items,
       );
 

@@ -17,12 +17,17 @@ class DetailPageHeader extends StatelessWidget {
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
           centerTitle: true,
-          title: Text(
-            name,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
+          title: Container(
+            width: double.maxFinite,
+            color: Colors.black54,
+            child: Text(
+              name,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           background: CacheNetworkImageWithProgress(imageUrl: imageUrl)),

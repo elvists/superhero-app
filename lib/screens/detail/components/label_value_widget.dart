@@ -11,22 +11,17 @@ class LabelValue extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
             label,
             style: AppTextStyles.textStyleLabel,
           ),
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 4.0),
-              child: Text(
-                value ?? "",
-                style: AppTextStyles.textStyleValue,
-              ),
-            ),
+          Text(
+            value,
+            style: AppTextStyles.textStyleValue,
           ),
         ],
       ),

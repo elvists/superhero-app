@@ -10,12 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.2
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
@@ -24,6 +18,15 @@ dev_dependencies:
   equatable: ^2.0.3
   cached_network_image: ^3.0.0
   flutter_radar_chart: ^0.2.0
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  bloc_test: ^8.0.2
+  mockito: ^5.0.10
+
+  
 
 flutter:
   uses-material-design: true

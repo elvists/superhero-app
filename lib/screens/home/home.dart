@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +9,9 @@ import 'package:superhero/bloc/superheroes_list/superheroes_list_state.dart';
 import 'package:superhero/common/components/error_screen.dart';
 import 'package:superhero/core/app_colors.dart';
 import 'package:superhero/core/app_styles.dart';
+import 'package:superhero/model/filter_home.dart';
 import 'package:superhero/model/superhero.dart';
+import 'package:superhero/routes.dart';
 
 import 'components/item_list.dart';
 
@@ -31,6 +35,7 @@ class _HomeScreen extends StatefulWidget {
 class __HomeScreenState extends State<_HomeScreen> {
   List<Superhero> _superheroes;
   List<Superhero> _superheroesFiltered;
+  FilterHome filter = FilterHome();
 
   @override
   void initState() {
@@ -42,16 +47,32 @@ class __HomeScreenState extends State<_HomeScreen> {
     context.read<SuperheroesListBloc>().add(SuperheroesListFetchEvent());
   }
 
-  void _filterSuperheroes(String text) {
+  void _updateText(String search) {
+    filter.search = search;
+    _filterSuperheroes();
+  }
+
+  void _updateFilterFemale() {
+    filter.isFemaleSelected = !filter.isFemaleSelected;
+    _filterSuperheroes();
+  }
+
+  void _updateFilterMale() {
+    filter.isMaleSelected = !filter.isMaleSelected;
+    _filterSuperheroes();
+  }
+
+  void _filterSuperheroes() {
     context.read<SuperheroesListBloc>().add(SuperheroesFilterEvent(
           superheroes: _superheroes,
-          filter: text,
+          filter: filter,
         ));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _buildFloatActionButton(),
       body: SafeArea(
         child: BlocConsumer<SuperheroesListBloc, SuperheroesListState>(
           listener: (context, state) {
@@ -78,7 +99,21 @@ class __HomeScreenState extends State<_HomeScreen> {
     );
   }
 
-  _buildScreen() {
+  FloatingActionButton _buildFloatActionButton() {
+    return FloatingActionButton(
+      onPressed: _onPressFloatActionButton,
+      child: const Icon(Icons.shuffle),
+      backgroundColor: Colors.black,
+    );
+  }
+
+  void _onPressFloatActionButton() {
+    Superhero randomSuperhero =
+        _superheroes[Random().nextInt(_superheroes.length)];
+    _goToDetailsScreen(randomSuperhero.id);
+  }
+
+  Column _buildScreen() {
     return Column(
       children: [
         _buildSearchInput(),
@@ -87,37 +122,67 @@ class __HomeScreenState extends State<_HomeScreen> {
     );
   }
 
-  _buildListSuperheroes() {
+  Expanded _buildListSuperheroes() {
     return Expanded(
       child: ListView.builder(
         itemCount: _superheroesFiltered.length,
         itemExtent: 150,
         itemBuilder: (context, index) {
-          return ItemList(superhero: _superheroesFiltered[index]);
+          return ItemList(
+              superhero: _superheroesFiltered[index],
+              navigationToDetailFunction: _goToDetailsScreen);
         },
       ),
     );
   }
 
-  _buildSearchInput() {
+  Container _buildSearchInput() {
     return Container(
       color: Colors.black,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
           color: Colors.white,
-          child: Row(children: [
-            Expanded(
+          child: Row(
+            children: [
+              Expanded(
                 child: TextFormField(
-              cursorColor: AppColors.blue,
-              maxLines: 1,
-              onChanged: (String text) => _filterSuperheroes(text),
-              decoration: AppStyles.inputDecoration(
-                  AppLocalizations.of(context).searchHint),
-            )),
-          ]),
+                  cursorColor: AppColors.blue,
+                  maxLines: 1,
+                  onChanged: (String text) => _updateText(text),
+                  decoration: AppStyles.inputDecoration(
+                      AppLocalizations.of(context).searchHint),
+                ),
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    icon: new Icon(
+                      Icons.female,
+                      color: filter.isFemaleSelected
+                          ? Colors.pink
+                          : Colors.black12,
+                    ),
+                    onPressed: _updateFilterFemale,
+                  ),
+                  IconButton(
+                    icon: new Icon(
+                      Icons.male,
+                      color:
+                          filter.isMaleSelected ? Colors.blue : Colors.black12,
+                    ),
+                    onPressed: _updateFilterMale,
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  void _goToDetailsScreen(int id) {
+    Navigator.pushNamed(context, DetailRoute, arguments: id);
   }
 }

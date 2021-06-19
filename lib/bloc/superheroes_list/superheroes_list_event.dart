@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
+import 'package:superhero/model/filter_home.dart';
 import 'package:superhero/model/superhero.dart';
 
 abstract class SuperheroesListEvent extends Equatable {
@@ -14,7 +15,7 @@ class SuperheroesListFetchEvent extends SuperheroesListEvent {
 }
 
 class SuperheroesFilterEvent extends SuperheroesListEvent {
-  final String filter;
+  final FilterHome filter;
   final List<Superhero> superheroes;
 
   const SuperheroesFilterEvent(
