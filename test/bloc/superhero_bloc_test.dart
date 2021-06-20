@@ -9,34 +9,36 @@ import '../mock/mock_superhero_webclient.dart';
 import '../mock/superheroes_mock.dart';
 
 main() {
-  group("SuperheroFetchEvent", () {
-    var e = Exception("Error");
+  group("superhero_bloc => ", () {
+    group("SuperheroFetchEvent => ", () {
+      var e = Exception("Error");
 
-    blocTest(
-      "should emit fetching and fetched states",
-      build: () {
-        final webClient = MockSuperheroWebClient();
-        when(webClient.getById(1)).thenAnswer((_) async => mockSuperHero);
-        return SuperheroBloc(webClient: webClient);
-      },
-      act: (bloc) => bloc.add(SuperheroFetchEvent(id: 1)),
-      expect: () => [
-        SuperheroFetchingState(),
-        SuperheroFetchedState(superhero: mockSuperHero),
-      ],
-    );
-    blocTest(
-      "should emit fetching and error state",
-      build: () {
-        final webClient = MockSuperheroWebClient();
-        when(webClient.getById(0)).thenThrow(e);
-        return SuperheroBloc(webClient: webClient);
-      },
-      act: (bloc) => bloc.add(SuperheroFetchEvent(id: 0)),
-      expect: () => [
-        SuperheroFetchingState(),
-        SuperheroErrorState(exception: e),
-      ],
-    );
+      blocTest(
+        "should emit fetching and fetched states",
+        build: () {
+          final webClient = MockSuperheroWebClient();
+          when(webClient.getById(1)).thenAnswer((_) async => mockSuperHero);
+          return SuperheroBloc(webClient: webClient);
+        },
+        act: (bloc) => bloc.add(SuperheroFetchEvent(id: 1)),
+        expect: () => [
+          SuperheroFetchingState(),
+          SuperheroFetchedState(superhero: mockSuperHero),
+        ],
+      );
+      blocTest(
+        "should emit fetching and error state",
+        build: () {
+          final webClient = MockSuperheroWebClient();
+          when(webClient.getById(0)).thenThrow(e);
+          return SuperheroBloc(webClient: webClient);
+        },
+        act: (bloc) => bloc.add(SuperheroFetchEvent(id: 0)),
+        expect: () => [
+          SuperheroFetchingState(),
+          SuperheroErrorState(exception: e),
+        ],
+      );
+    });
   });
 }

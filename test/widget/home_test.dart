@@ -16,29 +16,36 @@ Widget makeTestable(Widget widget) => Provider<CacheManager>(
     );
 
 void main() {
-  testWidgets(
-      'should load superhero item list with a name, genre, race and image',
-      (WidgetTester tester) async {
-    await tester.pumpWidget(makeTestable(ItemList(superhero: mockSuperHero)));
+  group(
+    "home_screen => ",
+    () {
+      testWidgets(
+          'should load superhero item list with a name, genre, race and image',
+          (WidgetTester tester) async {
+        await tester
+            .pumpWidget(makeTestable(ItemList(superhero: mockSuperHero)));
 
-    findMessageText(mockSuperHero.appearance.race);
-    findMessageText(mockSuperHero.appearance.gender);
-    findMessageText(mockSuperHero.name);
-    findType(CacheNetworkImageWithProgress);
-  });
+        findMessageText(mockSuperHero.appearance.race);
+        findMessageText(mockSuperHero.appearance.gender);
+        findMessageText(mockSuperHero.name);
+        findType(CacheNetworkImageWithProgress);
+      });
 
-  testWidgets(
-    'should load superhero list with mockSuperheroList length',
-    (WidgetTester tester) async {
-      await tester.pumpWidget(makeTestable(
-        SuperheroesList(
-          superheroes: mockSuperHeroesList,
-          navigationToDetailsFunction: null,
-        ),
-      ));
-      await tester.pump();
+      testWidgets(
+        'should load superhero list with mockSuperheroList length',
+        (WidgetTester tester) async {
+          await tester.pumpWidget(makeTestable(
+            SuperheroesList(
+              superheroes: mockSuperHeroesList,
+              navigationToDetailsFunction: null,
+            ),
+          ));
+          await tester.pump();
 
-      expect(find.byType(ItemList), findsNWidgets(mockSuperHeroesList.length));
+          expect(
+              find.byType(ItemList), findsNWidgets(mockSuperHeroesList.length));
+        },
+      );
     },
   );
 }
