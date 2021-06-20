@@ -12,28 +12,27 @@ import 'package:superhero/core/app_styles.dart';
 import 'package:superhero/model/filter_home.dart';
 import 'package:superhero/model/superhero.dart';
 import 'package:superhero/routes.dart';
-
+import 'package:superhero/screens/home/components/list_superheroes.dart';
 import 'components/icon_button_genre.dart';
-import 'components/item_list.dart';
 
 class HomeContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => SuperheroesListBloc(),
-      child: _HomeScreen(),
+      child: HomeScreen(),
     );
   }
 }
 
-class _HomeScreen extends StatefulWidget {
-  const _HomeScreen({Key key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<_HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   List<Superhero> _superheroes = [];
   List<Superhero> _superheroesFiltered;
   FilterHome _filter = FilterHome();
@@ -119,15 +118,9 @@ class _HomeScreenState extends State<_HomeScreen> {
       );
 
   Expanded _buildListSuperheroes() => Expanded(
-        child: ListView.builder(
-          itemCount: _superheroesFiltered.length,
-          itemExtent: 150,
-          itemBuilder: (context, index) {
-            return ItemList(
-              superhero: _superheroesFiltered[index],
-              navigationToDetailFunction: _goToDetailsScreen,
-            );
-          },
+        child: SuperheroesList(
+          superheroes: _superheroesFiltered,
+          navigationToDetailsFunction: _goToDetailsScreen,
         ),
       );
 

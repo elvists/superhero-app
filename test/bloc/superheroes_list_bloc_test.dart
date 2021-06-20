@@ -17,13 +17,14 @@ main() {
       "should emit fetching and fetched states",
       build: () {
         final webClient = MockSuperheroWebClient();
-        when(webClient.getAll()).thenAnswer((_) async => mockSuperHeroesList);
+        when(webClient.getAll())
+            .thenAnswer((_) async => mockSuperHeroesListBloc);
         return SuperheroesListBloc(webClient: webClient);
       },
       act: (bloc) => bloc.add(SuperheroesListFetchEvent()),
       expect: () => [
         SuperheroesListFetchingState(),
-        SuperheroesListFetchedState(superheroes: mockSuperHeroesList)
+        SuperheroesListFetchedState(superheroes: mockSuperHeroesListBloc)
       ],
     );
     blocTest(
@@ -50,12 +51,12 @@ main() {
       act: (bloc) => bloc.add(
         SuperheroesFilterEvent(
             filter: FilterHome(isFemaleSelected: true, isMaleSelected: false),
-            superheroes: mockSuperHeroesList),
+            superheroes: mockSuperHeroesListBloc),
       ),
       expect: () => [
         SuperheroesListFilteringState(),
         SuperheroesListFilteredState(
-            superheroesFiltered: mockSuperHeroesList.sublist(0, 3))
+            superheroesFiltered: mockSuperHeroesListBloc.sublist(0, 3))
       ],
     );
 
@@ -68,12 +69,12 @@ main() {
       act: (bloc) => bloc.add(
         SuperheroesFilterEvent(
             filter: FilterHome(isFemaleSelected: false, isMaleSelected: true),
-            superheroes: mockSuperHeroesList),
+            superheroes: mockSuperHeroesListBloc),
       ),
       expect: () => [
         SuperheroesListFilteringState(),
         SuperheroesListFilteredState(
-            superheroesFiltered: mockSuperHeroesList.sublist(3))
+            superheroesFiltered: mockSuperHeroesListBloc.sublist(3))
       ],
     );
 
@@ -86,12 +87,12 @@ main() {
       act: (bloc) => bloc.add(
         SuperheroesFilterEvent(
             filter: FilterHome(search: "captain"),
-            superheroes: mockSuperHeroesList),
+            superheroes: mockSuperHeroesListBloc),
       ),
       expect: () => [
         SuperheroesListFilteringState(),
         SuperheroesListFilteredState(
-            superheroesFiltered: mockSuperHeroesList.sublist(2, 4))
+            superheroesFiltered: mockSuperHeroesListBloc.sublist(2, 4))
       ],
     );
 
@@ -107,12 +108,12 @@ main() {
                 search: "captain",
                 isFemaleSelected: false,
                 isMaleSelected: true),
-            superheroes: mockSuperHeroesList),
+            superheroes: mockSuperHeroesListBloc),
       ),
       expect: () => [
         SuperheroesListFilteringState(),
         SuperheroesListFilteredState(
-            superheroesFiltered: mockSuperHeroesList.sublist(3, 4))
+            superheroesFiltered: mockSuperHeroesListBloc.sublist(3, 4))
       ],
     );
 
@@ -128,12 +129,12 @@ main() {
                 search: "captain",
                 isFemaleSelected: true,
                 isMaleSelected: false),
-            superheroes: mockSuperHeroesList),
+            superheroes: mockSuperHeroesListBloc),
       ),
       expect: () => [
         SuperheroesListFilteringState(),
         SuperheroesListFilteredState(
-            superheroesFiltered: mockSuperHeroesList.sublist(2, 3))
+            superheroesFiltered: mockSuperHeroesListBloc.sublist(2, 3))
       ],
     );
 
@@ -146,7 +147,7 @@ main() {
       act: (bloc) => bloc.add(
         SuperheroesFilterEvent(
             filter: FilterHome(search: "none"),
-            superheroes: mockSuperHeroesList),
+            superheroes: mockSuperHeroesListBloc),
       ),
       expect: () => [
         SuperheroesListFilteringState(),
