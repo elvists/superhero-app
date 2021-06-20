@@ -102,18 +102,21 @@ Superhero mockSuperHero = Superhero(
 
 List<Superhero> mockSuperHeroesList = [
   Superhero(
+    id: 1,
     name: "Batman",
     appearance: Appearance(race: "Human", gender: "Male"),
     images: Images(sm: ""),
   ),
   Superhero(
+    id: 2,
     name: "Superman",
     appearance: Appearance(race: "Kryptonian", gender: "Male"),
     images: Images(sm: ""),
   ),
   Superhero(
-    name: "Wonder Woman",
-    appearance: Appearance(race: "Amazon", gender: "Female"),
+    id: 3,
+    name: "Captain Marvel",
+    appearance: Appearance(race: "Human-Kree", gender: "Female"),
     images: Images(sm: ""),
   )
 ];

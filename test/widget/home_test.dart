@@ -8,7 +8,7 @@ import 'package:superhero/screens/home/components/list_superheroes.dart';
 
 import '../mock/superheroes_mock.dart';
 import 'components/test_cache_manager.dart';
-import 'components/actions.dart';
+import '../actions/common.dart';
 
 Widget makeTestable(Widget widget) => Provider<CacheManager>(
       create: (_) => TestCacheManager(),

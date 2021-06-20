@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'matchers.dart';
+import '../widget/components/matchers.dart';
 
 void findMessageText(String message, {Matcher matcher = findsOneWidget}) {
   final textFinder =

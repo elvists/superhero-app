@@ -6,7 +6,7 @@ import 'package:superhero/bloc/superheroes_list/superheroes_list_event.dart';
 import 'package:superhero/bloc/superheroes_list/superheroes_list_state.dart';
 import 'package:superhero/model/filter_home.dart';
 
-import '../mock/mock_superhero_webclient.dart';
+import '../mock/mock_webclient.dart';
 import '../mock/superheroes_mock.dart';
 
 main() {

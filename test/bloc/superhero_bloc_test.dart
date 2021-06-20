@@ -5,7 +5,7 @@ import 'package:superhero/bloc/superhero/superhero_bloc.dart';
 import 'package:superhero/bloc/superhero/superhero_event.dart';
 import 'package:superhero/bloc/superhero/superhero_state.dart';
 
-import '../mock/mock_superhero_webclient.dart';
+import '../mock/mock_webclient.dart';
 import '../mock/superheroes_mock.dart';
 
 main() {

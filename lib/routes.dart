@@ -3,18 +3,18 @@ import 'package:superhero/screens/detail/detail.dart';
 import 'package:superhero/screens/home/home.dart';
 
 const String HomeRoute = "/home";
-const String DetailRoute = "/hero";
+const String DetailRoute = "/superhero";
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case DetailRoute:
-      return _getPageRoute(DetailContainer(id: settings.arguments), settings);
+      return getPageRoute(DetailContainer(id: settings.arguments), settings);
     default:
-      return _getPageRoute(HomeContainer(), settings);
+      return getPageRoute(HomeContainer(), settings);
   }
 }
 
-PageRoute _getPageRoute(Widget child, RouteSettings settings) {
+PageRoute getPageRoute(Widget child, RouteSettings settings) {
   return _FadeRoute(child: child, routeName: settings.name);
 }
 

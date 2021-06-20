@@ -18,21 +18,21 @@ class DetailContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => SuperheroBloc(),
-      child: _DetailScreen(id: id),
+      child: DetailScreen(id: id),
     );
   }
 }
 
-class _DetailScreen extends StatefulWidget {
+class DetailScreen extends StatefulWidget {
   final int id;
 
-  const _DetailScreen({Key key, this.id}) : super(key: key);
+  const DetailScreen({Key key, this.id}) : super(key: key);
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
 }
 
-class _DetailScreenState extends State<_DetailScreen> {
+class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
     _loadSuperhero();
