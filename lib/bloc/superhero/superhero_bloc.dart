@@ -1,15 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:superhero/api/superhero_webclient.dart';
 import 'package:superhero/model/superhero.dart';
+import 'package:superhero/service/superhero_service.dart';
 
 import 'superhero_event.dart';
 import 'superhero_state.dart';
 
 class SuperheroBloc extends Bloc<SuperheroEvent, SuperheroState> {
-  final SuperheroWebClient superheroWebClient;
+  final SuperheroService superheroService;
 
-  SuperheroBloc({SuperheroWebClient webClient})
-      : superheroWebClient = webClient ?? SuperheroWebClient(),
+  SuperheroBloc({SuperheroService service})
+      : superheroService = service ?? SuperheroService(),
         super(const SuperheroEmptyState());
 
   @override
@@ -17,7 +17,7 @@ class SuperheroBloc extends Bloc<SuperheroEvent, SuperheroState> {
     try {
       if (event is SuperheroFetchEvent) {
         yield SuperheroFetchingState();
-        Superhero superhero = await superheroWebClient.getById(event.id);
+        Superhero superhero = await superheroService.getById(event.id);
         yield SuperheroFetchedState(superhero: superhero);
       }
     } catch (e) {

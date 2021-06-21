@@ -5,7 +5,7 @@ import 'package:superhero/bloc/superhero/superhero_bloc.dart';
 import 'package:superhero/bloc/superhero/superhero_event.dart';
 import 'package:superhero/bloc/superhero/superhero_state.dart';
 
-import '../mock/mock_webclient.dart';
+import '../mock/mock_service.dart';
 import '../mock/superheroes_mock.dart';
 
 main() {
@@ -16,9 +16,9 @@ main() {
       blocTest(
         "should emit fetching and fetched states",
         build: () {
-          final webClient = MockSuperheroWebClient();
-          when(webClient.getById(1)).thenAnswer((_) async => mockSuperHero);
-          return SuperheroBloc(webClient: webClient);
+          final service = MockSuperheroService();
+          when(service.getById(1)).thenAnswer((_) async => mockSuperHero);
+          return SuperheroBloc(service: service);
         },
         act: (bloc) => bloc.add(SuperheroFetchEvent(id: 1)),
         expect: () => [
@@ -29,9 +29,9 @@ main() {
       blocTest(
         "should emit fetching and error state",
         build: () {
-          final webClient = MockSuperheroWebClient();
-          when(webClient.getById(0)).thenThrow(e);
-          return SuperheroBloc(webClient: webClient);
+          final service = MockSuperheroService();
+          when(service.getById(0)).thenThrow(e);
+          return SuperheroBloc(service: service);
         },
         act: (bloc) => bloc.add(SuperheroFetchEvent(id: 0)),
         expect: () => [

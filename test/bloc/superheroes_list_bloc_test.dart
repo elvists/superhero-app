@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -6,7 +8,7 @@ import 'package:superhero/bloc/superheroes_list/superheroes_list_event.dart';
 import 'package:superhero/bloc/superheroes_list/superheroes_list_state.dart';
 import 'package:superhero/model/filter_home.dart';
 
-import '../mock/mock_webclient.dart';
+import '../mock/mock_service.dart';
 import '../mock/superheroes_mock.dart';
 
 main() {
@@ -17,23 +19,23 @@ main() {
       blocTest(
         "should emit fetching and fetched states",
         build: () {
-          final webClient = MockSuperheroWebClient();
-          when(webClient.getAll())
-              .thenAnswer((_) async => mockSuperHeroesListBloc);
-          return SuperheroesListBloc(webClient: webClient);
+          final service = MockSuperheroService();
+          when(service.getAll())
+              .thenAnswer((_) async => mockSuperHeroesLongerList);
+          return SuperheroesListBloc(service: service);
         },
         act: (bloc) => bloc.add(SuperheroesListFetchEvent()),
         expect: () => [
           SuperheroesListFetchingState(),
-          SuperheroesListFetchedState(superheroes: mockSuperHeroesListBloc)
+          SuperheroesListFetchedState(superheroes: mockSuperHeroesLongerList)
         ],
       );
       blocTest(
         "should emit fetching and error state",
         build: () {
-          final webClient = MockSuperheroWebClient();
-          when(webClient.getAll()).thenThrow(e);
-          return SuperheroesListBloc(webClient: webClient);
+          final service = MockSuperheroService();
+          when(service.getAll()).thenThrow(e);
+          return SuperheroesListBloc(service: service);
         },
         act: (bloc) => bloc.add(SuperheroesListFetchEvent()),
         expect: () => [
@@ -46,62 +48,58 @@ main() {
       blocTest(
         "should emit filtering and filter state with filtered by female",
         build: () {
-          final webClient = MockSuperheroWebClient();
-          return SuperheroesListBloc(webClient: webClient);
+          return SuperheroesListBloc();
         },
         act: (bloc) => bloc.add(
           SuperheroesFilterEvent(
               filter: FilterHome(isFemaleSelected: true, isMaleSelected: false),
-              superheroes: mockSuperHeroesListBloc),
+              superheroes: mockSuperHeroesLongerList),
         ),
         expect: () => [
           SuperheroesListFilteringState(),
           SuperheroesListFilteredState(
-              superheroesFiltered: mockSuperHeroesListBloc.sublist(0, 3))
+              superheroesFiltered: mockSuperHeroesLongerList.sublist(0, 3))
         ],
       );
 
       blocTest(
         "should emit filtering and filter state with filtered by male",
         build: () {
-          final webClient = MockSuperheroWebClient();
-          return SuperheroesListBloc(webClient: webClient);
+          return SuperheroesListBloc();
         },
         act: (bloc) => bloc.add(
           SuperheroesFilterEvent(
               filter: FilterHome(isFemaleSelected: false, isMaleSelected: true),
-              superheroes: mockSuperHeroesListBloc),
+              superheroes: mockSuperHeroesLongerList),
         ),
         expect: () => [
           SuperheroesListFilteringState(),
           SuperheroesListFilteredState(
-              superheroesFiltered: mockSuperHeroesListBloc.sublist(3))
+              superheroesFiltered: mockSuperHeroesLongerList.sublist(3))
         ],
       );
 
       blocTest(
         "should emit filtering and filter state with filtered by captain",
         build: () {
-          final webClient = MockSuperheroWebClient();
-          return SuperheroesListBloc(webClient: webClient);
+          return SuperheroesListBloc();
         },
         act: (bloc) => bloc.add(
           SuperheroesFilterEvent(
               filter: FilterHome(search: "captain"),
-              superheroes: mockSuperHeroesListBloc),
+              superheroes: mockSuperHeroesLongerList),
         ),
         expect: () => [
           SuperheroesListFilteringState(),
           SuperheroesListFilteredState(
-              superheroesFiltered: mockSuperHeroesListBloc.sublist(2, 4))
+              superheroesFiltered: mockSuperHeroesLongerList.sublist(2, 4))
         ],
       );
 
       blocTest(
         "should emit filtering and filter state with list filtered by male and captain",
         build: () {
-          final webClient = MockSuperheroWebClient();
-          return SuperheroesListBloc(webClient: webClient);
+          return SuperheroesListBloc();
         },
         act: (bloc) => bloc.add(
           SuperheroesFilterEvent(
@@ -109,20 +107,19 @@ main() {
                   search: "captain",
                   isFemaleSelected: false,
                   isMaleSelected: true),
-              superheroes: mockSuperHeroesListBloc),
+              superheroes: mockSuperHeroesLongerList),
         ),
         expect: () => [
           SuperheroesListFilteringState(),
           SuperheroesListFilteredState(
-              superheroesFiltered: mockSuperHeroesListBloc.sublist(3, 4))
+              superheroesFiltered: mockSuperHeroesLongerList.sublist(3, 4))
         ],
       );
 
       blocTest(
         "should emit filtering and filter state with list filtered by female and captain",
         build: () {
-          final webClient = MockSuperheroWebClient();
-          return SuperheroesListBloc(webClient: webClient);
+          return SuperheroesListBloc();
         },
         act: (bloc) => bloc.add(
           SuperheroesFilterEvent(
@@ -130,25 +127,24 @@ main() {
                   search: "captain",
                   isFemaleSelected: true,
                   isMaleSelected: false),
-              superheroes: mockSuperHeroesListBloc),
+              superheroes: mockSuperHeroesLongerList),
         ),
         expect: () => [
           SuperheroesListFilteringState(),
           SuperheroesListFilteredState(
-              superheroesFiltered: mockSuperHeroesListBloc.sublist(2, 3))
+              superheroesFiltered: mockSuperHeroesLongerList.sublist(2, 3))
         ],
       );
 
       blocTest(
         "should emit filtering and filter state with list empty",
         build: () {
-          final webClient = MockSuperheroWebClient();
-          return SuperheroesListBloc(webClient: webClient);
+          return SuperheroesListBloc();
         },
         act: (bloc) => bloc.add(
           SuperheroesFilterEvent(
               filter: FilterHome(search: "none"),
-              superheroes: mockSuperHeroesListBloc),
+              superheroes: mockSuperHeroesLongerList),
         ),
         expect: () => [
           SuperheroesListFilteringState(),

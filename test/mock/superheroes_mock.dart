@@ -6,7 +6,7 @@ import 'package:superhero/model/powerstats.dart';
 import 'package:superhero/model/superhero.dart';
 import 'package:superhero/model/work.dart';
 
-List<Superhero> mockSuperHeroesListBloc = [
+List<Superhero> mockSuperHeroesLongerList = [
   Superhero(
     name: "Black Widow",
     appearance: Appearance(race: "Human", gender: "Female"),

@@ -5,13 +5,13 @@ import 'package:superhero/model/superhero.dart';
 class SuperheroWebClient {
   final Dio _dio = DioInstance().client;
 
-  Future<List<Superhero>> getAll() async {
+  Future<dynamic> getAll() async {
     final response = await _dio.get('all.json');
-    return (response.data as List).map((x) => Superhero.fromJson(x)).toList();
+    return response.data;
   }
 
-  Future<Superhero> getById(int id) async {
+  Future<dynamic> getById(int id) async {
     final response = await _dio.get('id/$id.json');
-    return Superhero.fromJson(response.data);
+    return response.data;
   }
 }
