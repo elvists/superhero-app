@@ -5,7 +5,7 @@ import 'detail_screen_test.dart' as detail_screen_test;
 
 void main() {
   group("flow test => ", () {
-    home_screen_test.main();
+    //home_screen_test.main();
     detail_screen_test.main();
   });
 }
