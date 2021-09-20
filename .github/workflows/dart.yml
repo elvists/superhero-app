@@ -74,14 +74,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           path: coverage/lcov.info
-      - name: Upload Test report
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        uses: schneegans/dynamic-badges-action@v1.1.0
-        with:
-          auth: ${{ secrets.GIST_SECRET }}
-          gistID: a6555ab824d2d632c3a51ab11ead325b
-          filename: coverage/lcov.info
-          label: Hello
-          message: World
-          color: orange
   
