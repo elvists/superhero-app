@@ -20,7 +20,7 @@ jobs:
       id: find
       uses: elvists/find-modules@v1.0
       with:
-        working-directory: 'packages'
+        working-directory: 'lib'
     outputs:
       modules: ${{ steps.find.outputs.modules }}
      
