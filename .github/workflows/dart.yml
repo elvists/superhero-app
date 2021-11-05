@@ -55,7 +55,7 @@ jobs:
           working-directory: 'lib'
       
       - name: Echo
-        run: echo "${{ steps.modules.outputs.modules }}
+        run: echo ${{ steps.modules.outputs.modules }}
 
 #       # Flutter Build 
 #       - name: Building appbundle
