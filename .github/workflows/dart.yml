@@ -21,8 +21,6 @@ jobs:
         include:
           - os: ubuntu-latest
             flutter_path: /opt/hostedtoolcache/flutter
-          - os: macos-latest
-            flutter_path: /Users/runner/hostedtoolcache/flutter
       fail-fast: false
 
     steps:
@@ -42,13 +40,13 @@ jobs:
         with:
           flutter-version: ${{ env.flutter_version }}
       
-      # Install Dependencies  
-      - name: Install pub Dependencies     
-        run: flutter pub get
+#       # Install Dependencies  
+#       - name: Install pub Dependencies     
+#         run: flutter pub get
       
-     # Flutter Test
-      - name: Testing project
-        run: flutter test --coverage
+#      # Flutter Test
+#       - name: Testing project
+#         run: flutter test --coverage
         
       - name: get names
         id: modules
@@ -57,7 +55,7 @@ jobs:
           working-directory: 'lib'
       
       - name: Echo
-        run: echo {{ steps.modules.outputs.modules }}
+        run: echo "${{ steps.modules.outputs.modules }}
 
 #       # Flutter Build 
 #       - name: Building appbundle
