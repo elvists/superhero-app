@@ -16,11 +16,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v1
+      with:
+        flutter-version: ${{ env.flutter_version }}
     - name: Get Modules list
       id: find
       uses: elvists/find-modules@v1.0
       with:
         working-directory: 'lib'
+    - name: flutter
+      run: flutter --version 
     outputs:
       modules: ${{ steps.find.outputs.modules }}
      
@@ -31,12 +37,10 @@ jobs:
       matrix:
         module: ${{ fromJson(needs.config-modules.outputs.modules) }}
     steps:
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v1
-        with:
-          flutter-version: ${{ env.flutter_version }}
       - name: test
         run: echo ${{ matrix.module }}
+      - name: flutter
+        run: flutter --version  
   
 #   setup-and-build:
 #     runs-on: ${{ matrix.os }}
