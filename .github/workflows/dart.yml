@@ -12,33 +12,58 @@ env:
 
 jobs:
   
-  setup-and-build:
-    runs-on: ${{ matrix.os }}
-
+  config-modules:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get Modules list
+      id: find
+      uses: elvists/find-modules@v1.0
+      with:
+        working-directory: 'packages'
+    outputs:
+      modules: ${{ steps.find.outputs.modules }}
+     
+  test:
+    needs: config-modules
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        include:
-          - os: ubuntu-latest
-            flutter_path: /opt/hostedtoolcache/flutter
-      fail-fast: false
-
+        module: ${{ fromJson(needs.config-modules.outputs.modules) }}
     steps:
-      # Setup Environment
-      - uses: actions/checkout@v2
-      - name: Cache Flutter dependencies
-        uses: actions/cache@v1
-        with:
-          path: ${{ matrix.flutter_path }}
-          key: ${{ runner.os }}-flutter
-      - name: Setup Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: ${{ env.java_version }}
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
           flutter-version: ${{ env.flutter_version }}
+      - name: test
+        run: echo ${{ matrix.module }}
+  
+#   setup-and-build:
+#     runs-on: ${{ matrix.os }}
+
+#     strategy:
+#       matrix:
+#         os: [ubuntu-latest]
+#         include:
+#           - os: ubuntu-latest
+#             flutter_path: /opt/hostedtoolcache/flutter
+#       fail-fast: false
+
+#     steps:
+#       # Setup Environment
+#       - name: Cache Flutter dependencies
+#         uses: actions/cache@v1
+#         with:
+#           path: ${{ matrix.flutter_path }}
+#           key: ${{ runner.os }}-flutter
+#       - name: Setup Java
+#         uses: actions/setup-java@v1
+#         with:
+#           java-version: ${{ env.java_version }}
+#       - name: Setup Flutter
+#         uses: subosito/flutter-action@v1
+#         with:
+#           flutter-version: ${{ env.flutter_version }}
       
 #       # Install Dependencies  
 #       - name: Install pub Dependencies     
