@@ -83,15 +83,15 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           path: coverage/lcov.info
-          
-  notify:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: ravsamhq/notify-slack-action@v1
-      if: always()
-      with:
-        status: ${{ job.status }} 
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
+    
+#   notify:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: ravsamhq/notify-slack-action@v1
+#       if: always()
+#       with:
+#         status: ${{ job.status }} 
+#       env:
+#         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
   
 
