@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
         include:
           - os: ubuntu-latest
             flutter_path: /opt/hostedtoolcache/flutter
@@ -49,6 +49,15 @@ jobs:
      # Flutter Test
       - name: Testing project
         run: flutter test --coverage
+        
+      - name: get names
+        id: modules
+        uses: elvists/find-modules@v1.0
+        with:
+          working-directory: 'lib'
+      
+      - name: Echo
+        run: echo {{ steps.modules.outputs.modules }}
 
 #       # Flutter Build 
 #       - name: Building appbundle
