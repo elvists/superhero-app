@@ -35,9 +35,9 @@ jobs:
       - name: test
         run:  for f in "${${{ fromJson(needs.config-modules.outputs.modules) }}[@]}"; do echo $f; done
       - name: test3
-        run:  for f in "${${{ fromJson(needs.config-modules.outputs.modules) }}[@]}"; do echo 'sdsda'; done
+        run:  for f in '${${{ fromJson(needs.config-modules.outputs.modules) }}[@]}'; do echo 'sdsda'; done
       - name: test2
-        run:  for f in "${${{ needs.config-modules.outputs.modules }}[@]}"; do echo $f; done
+        run:  for f in '${${{ needs.config-modules.outputs.modules }}[@]}; do echo $f; done
 
 #   setup-and-build:
 #     runs-on: ${{ matrix.os }}
