@@ -28,11 +28,17 @@ jobs:
     needs: config-modules
     runs-on: ubuntu-latest
     steps:
+      - name: sdsd
+        run: echo ${{ fromJson(needs.config-modules.outputs.modules) }}
+      - name: sdsdsd
+        run: echo ${{ needs.config-modules.outputs.modules }}
       - name: test
         run:  for f in "${${{ fromJson(needs.config-modules.outputs.modules) }}[@]}"; do echo $f; done
-      - name: flutter
-        run: flutter --version  
-  
+      - name: test3
+        run:  for f in "${${{ fromJson(needs.config-modules.outputs.modules) }}[@]}"; do echo 'sdsda'; done
+      - name: test2
+        run:  for f in "${${{ needs.config-modules.outputs.modules }}[@]}"; do echo $f; done
+
 #   setup-and-build:
 #     runs-on: ${{ matrix.os }}
 
